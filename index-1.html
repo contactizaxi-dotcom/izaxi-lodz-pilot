@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Pilotażowa usługa niemedycznego towarzyszenia seniorom w Łodzi. Formularze dla rodzin i kandydatów na towarzyszy seniora." />
+  <title>Towarzystwo dla seniora w Łodzi | Pilotaż IZAXI</title>
+  <style>
+    :root{
+      --bg:#f6f3ee;--card:#fff;--text:#1f2924;--muted:#647067;--line:#dfe5df;--accent:#2f6b4f;--accent2:#e8f2ec;--danger:#8b3a3a;
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+    *{box-sizing:border-box}
+    html,body{max-width:100%;overflow-x:hidden}
+    button,input,select,textarea,a{max-width:100%}
+    body{margin:0;background:var(--bg);color:var(--text);line-height:1.55}
+    a{color:inherit}
+    .wrap{width:min(920px,calc(100% - 32px));margin:0 auto}
+    header{padding:42px 0 24px}
+    .brand{font-weight:800;letter-spacing:.04em;font-size:14px;color:var(--accent)}
+    h1{font-size:clamp(30px,6vw,52px);line-height:1.06;margin:10px 0 14px;max-width:850px}
+    .lead{font-size:18px;color:var(--muted);max-width:760px;margin:0}
+    .notice{margin:24px 0;background:var(--accent2);border:1px solid #cfe1d5;border-radius:16px;padding:16px 18px}
+    .notice strong{display:block;margin-bottom:4px}
+    .switcher{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0 18px}
+    .switcher button{min-height:52px;border:1px solid var(--line);border-radius:14px;background:#fff;font-size:16px;font-weight:700;color:var(--text);cursor:pointer;padding:10px}
+    .switcher button[aria-selected="true"]{background:var(--accent);color:white;border-color:var(--accent)}
+    .panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:clamp(20px,4vw,34px);margin-bottom:28px}
+    .panel[hidden]{display:none}
+    h2{font-size:28px;margin:0 0 8px}
+    .intro{color:var(--muted);margin:0 0 24px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .full{grid-column:1/-1}
+    label,legend{font-weight:700;font-size:14px;display:block;margin-bottom:7px}
+    input,select,textarea{width:100%;border:1px solid #cfd7d1;border-radius:12px;background:#fff;padding:13px 14px;font:inherit;color:var(--text);min-height:48px}
+    textarea{min-height:110px;resize:vertical}
+    input:focus,select:focus,textarea:focus,button:focus-visible{outline:3px solid rgba(47,107,79,.22);outline-offset:2px;border-color:var(--accent)}
+    fieldset{border:0;padding:0;margin:0}
+    .checks{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .check{display:flex;align-items:flex-start;gap:10px;border:1px solid var(--line);border-radius:12px;padding:11px 12px;background:#fff}
+    .check input{width:20px;height:20px;min-height:0;margin:2px 0 0}
+    .check span{font-size:14px}
+    .consent{display:flex;gap:10px;align-items:flex-start;margin-top:4px}
+    .consent input{width:20px;height:20px;min-height:0;margin:2px 0 0}
+    .consent label{font-weight:500;margin:0;color:#414c45}
+    .safe{background:#fafafa;border:1px dashed #cfd7d1;border-radius:14px;padding:14px 16px;color:var(--muted);font-size:14px}
+    .submit{margin-top:20px;width:100%;border:0;border-radius:14px;background:var(--accent);color:#fff;font-weight:800;font-size:16px;min-height:54px;cursor:pointer}
+    .hp{position:absolute!important;left:-10000px!important;top:auto!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;clip-path:inset(50%)!important;white-space:nowrap!important}
+    .privacy-note{font-size:13px;color:var(--muted);margin-top:8px}
+    .privacy-note a,.footer-links a{text-decoration:underline;text-underline-offset:2px}
+    footer{padding:6px 0 40px;color:var(--muted);font-size:13px;text-align:center}
+    .footer-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+    @media(max-width:700px){
+      .wrap{width:min(100% - 20px,920px)}
+      header{padding-top:28px}
+      .grid{grid-template-columns:1fr}
+      .full{grid-column:auto}
+      .checks{grid-template-columns:1fr}
+      .switcher{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <div class="brand">IZAXI · ŁÓDŹ PILOT</div>
+    <h1>Regularne, niemedyczne towarzystwo dla seniora w Łodzi</h1>
+    <p class="lead">Badamy potrzebę usługi opartej na rozmowie, spacerach, zakupach i codziennym towarzyszeniu. Na tym etapie zbieramy zgłoszenia rodzin i kandydatów — bez rezerwacji i płatności.</p>
+    <div class="notice">
+      <strong>Faza pilotażowa / badawcza</strong>
+      Hipoteza ceny pilotażowej dla rodzin: 45 zł/h, zwykle w blokach od 2 godzin. Nie świadczymy usług medycznych ani pielęgnacyjnych.
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="switcher" role="tablist" aria-label="Wybierz formularz">
+      <button id="tab-family" type="button" role="tab" aria-controls="family-panel" aria-selected="true">Dla rodziny</button>
+      <button id="tab-companion" type="button" role="tab" aria-controls="companion-panel" aria-selected="false">Chcę zostać towarzyszem seniora</button>
+    </div>
+
+    <section id="family-panel" class="panel" role="tabpanel" aria-labelledby="tab-family">
+      <h2>Towarzystwo dla seniora w Łodzi – formularz dla rodziny</h2>
+      <p class="intro">Szukamy kilku rodzin do pilotażu usługi regularnego towarzyszenia seniorom w Łodzi. Usługa ma charakter niemedyczny: rozmowa, spacer, zakupy, drobne codzienne sprawy i towarzyszenie. Nie świadczymy usług pielęgnacyjnych ani medycznych.</p>
+
+      <form name="rodziny-lodz" method="POST" action="/dziekujemy.html" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="rodziny-lodz" />
+        <p class="hp" aria-hidden="true"><label>Nie wypełniaj tego pola: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+        <div class="grid">
+          <div><label for="f-name">Imię i nazwisko *</label><input id="f-name" name="imie_nazwisko" autocomplete="name" required /></div>
+          <div><label for="f-email">E-mail *</label><input id="f-email" name="email" type="email" autocomplete="email" required /></div>
+          <div><label for="f-phone">Telefon *</label><input id="f-phone" name="telefon" type="tel" autocomplete="tel" required /></div>
+          <div><label for="f-relation">Kim jesteś dla seniora? *</label><input id="f-relation" name="relacja" required /></div>
+          <div><label for="f-age">Wiek seniora *</label><input id="f-age" name="wiek_seniora" type="number" min="50" max="120" inputmode="numeric" required /></div>
+          <div><label for="f-district">Dzielnica Łodzi *</label><select id="f-district" name="dzielnica" required><option value="">Wybierz</option><option value="Bałuty">Bałuty</option><option value="Górna">Górna</option><option value="Polesie">Polesie</option><option value="Śródmieście">Śródmieście</option><option value="Widzew">Widzew</option></select></div>
+          <div><label for="f-alone">Czy senior mieszka sam? *</label><select id="f-alone" name="mieszka_sam" required><option value="">Wybierz</option><option value="Tak">Tak</option><option value="Nie">Nie</option><option value="Nie wiem">Nie wiem</option></select></div>
+          <div><label for="f-frequency">Jak często potrzebne byłyby wizyty? *</label><select id="f-frequency" name="czestotliwosc" required><option value="">Wybierz</option><option value="1x tygodniowo">1x tygodniowo</option><option value="2x tygodniowo">2x tygodniowo</option><option value="3x+ tygodniowo">3x+ tygodniowo</option><option value="Okazjonalnie">Okazjonalnie</option><option value="Nie wiem">Nie wiem</option></select></div>
+          <div><label for="f-hours">Ile godzin na wizytę? *</label><input id="f-hours" name="godziny_na_wizyte" type="number" min="0.5" max="12" step="0.5" required /></div>
+          <div><label for="f-price">Akceptowalna cena (PLN/h) *</label><input id="f-price" name="akceptowalna_cena_pln_h" type="number" min="20" max="150" step="1" required /></div>
+
+          <fieldset class="full"><legend>Zakres pomocy *</legend><div class="checks">
+            <label class="check"><input type="checkbox" name="zakres" value="Rozmowa" /><span>Rozmowa</span></label>
+            <label class="check"><input type="checkbox" name="zakres" value="Spacery" /><span>Spacery</span></label>
+            <label class="check"><input type="checkbox" name="zakres" value="Zakupy" /><span>Zakupy</span></label>
+            <label class="check"><input type="checkbox" name="zakres" value="Towarzyszenie na wizytach" /><span>Towarzyszenie na wizytach</span></label>
+            <label class="check"><input type="checkbox" name="zakres" value="Prosta pomoc z technologią" /><span>Prosta pomoc z technologią</span></label>
+            <label class="check"><input type="checkbox" name="zakres" value="Inne" /><span>Inne</span></label>
+          </div></fieldset>
+
+          <div class="full"><label for="f-notes">Opcjonalne uwagi</label><textarea id="f-notes" name="uwagi" placeholder="Dodatkowe informacje, które pomogą nam zrozumieć potrzebę rodziny."></textarea></div>
+          <div class="full safe">Dla bezpieczeństwa nie wpisuj tutaj diagnoz, list leków, numeru PESEL, numerów dokumentów ani pełnego adresu zamieszkania seniora.</div>
+          <div class="full consent"><input id="f-consent" name="zgoda" type="checkbox" value="Tak" required /><label for="f-consent">Zapoznałem/am się z <a href="/polityka-prywatnosci.html" target="_blank" rel="noopener">Polityką prywatności</a> i wyrażam zgodę na kontakt w sprawie pilotażu oraz przetwarzanie podanych danych wyłącznie w tym celu. *</label></div>
+        </div>
+        <p class="privacy-note">Dane wykorzystujemy wyłącznie do obsługi zgłoszenia pilotażowego. Szczegóły: <a href="/polityka-prywatnosci.html" target="_blank" rel="noopener">Polityka prywatności</a>.</p>
+        <button class="submit" type="submit">Wyślij zgłoszenie rodziny</button>
+      </form>
+    </section>
+
+    <section id="companion-panel" class="panel" role="tabpanel" aria-labelledby="tab-companion" hidden>
+      <h2>Zgłoszenie – towarzysz seniora w Łodzi</h2>
+      <p class="intro">Szukamy spokojnych, odpowiedzialnych osób do niemedycznego towarzyszenia seniorom: rozmowy, spacery, zakupy, towarzyszenie w codziennych wyjściach i prosta pomoc w zwykłych sprawach. Nie jest to praca pielęgniarska ani opieka osobista.</p>
+
+      <form name="towarzysze-lodz" method="POST" action="/dziekujemy.html" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="towarzysze-lodz" />
+        <p class="hp" aria-hidden="true"><label>Nie wypełniaj tego pola: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+        <div class="grid">
+          <div><label for="c-name">Imię i nazwisko *</label><input id="c-name" name="imie_nazwisko" autocomplete="name" required /></div>
+          <div><label for="c-email">E-mail *</label><input id="c-email" name="email" type="email" autocomplete="email" required /></div>
+          <div><label for="c-phone">Telefon *</label><input id="c-phone" name="telefon" type="tel" autocomplete="tel" required /></div>
+          <div><label for="c-district">Dzielnica Łodzi *</label><select id="c-district" name="dzielnica" required><option value="">Wybierz</option><option value="Bałuty">Bałuty</option><option value="Górna">Górna</option><option value="Polesie">Polesie</option><option value="Śródmieście">Śródmieście</option><option value="Widzew">Widzew</option></select></div>
+          <div><label for="c-exp">Doświadczenie z seniorami *</label><select id="c-exp" name="doswiadczenie" required><option value="">Wybierz</option><option value="Brak">Brak</option><option value="Rodzinne / nieformalne">Rodzinne / nieformalne</option><option value="Płatne doświadczenie">Płatne doświadczenie</option><option value="Zawodowe doświadczenie opiekuńcze">Zawodowe doświadczenie opiekuńcze</option></select></div>
+          <div><label for="c-rate">Oczekiwana stawka (PLN/h) *</label><input id="c-rate" name="oczekiwana_stawka_pln_h" type="number" min="20" max="150" step="1" required /></div>
+
+          <fieldset class="full"><legend>Języki *</legend><div class="checks">
+            <label class="check"><input type="checkbox" name="jezyki" value="Polski" /><span>Polski</span></label>
+            <label class="check"><input type="checkbox" name="jezyki" value="Angielski" /><span>Angielski</span></label>
+            <label class="check"><input type="checkbox" name="jezyki" value="Niemiecki" /><span>Niemiecki</span></label>
+            <label class="check"><input type="checkbox" name="jezyki" value="Ukraiński" /><span>Ukraiński</span></label>
+            <label class="check"><input type="checkbox" name="jezyki" value="Rosyjski" /><span>Rosyjski</span></label>
+            <label class="check"><input type="checkbox" name="jezyki" value="Inne" /><span>Inne</span></label>
+          </div></fieldset>
+
+          <fieldset class="full"><legend>Dostępność *</legend><div class="checks">
+            <label class="check"><input type="checkbox" name="dostepnosc" value="Poranki w dni robocze" /><span>Poranki w dni robocze</span></label>
+            <label class="check"><input type="checkbox" name="dostepnosc" value="Popołudnia" /><span>Popołudnia</span></label>
+            <label class="check"><input type="checkbox" name="dostepnosc" value="Wieczory" /><span>Wieczory</span></label>
+            <label class="check"><input type="checkbox" name="dostepnosc" value="Weekendy" /><span>Weekendy</span></label>
+          </div></fieldset>
+
+          <div class="full"><label for="c-why">Dlaczego chcesz wykonywać tę pracę? *</label><textarea id="c-why" name="motywacja" required></textarea></div>
+          <div class="full safe">Weryfikację tożsamości, referencji i zaświadczenia o niekaralności przeprowadzimy dopiero później wobec wybranych kandydatów. Nie przesyłaj ich teraz przez ten formularz.</div>
+          <div class="full consent"><input id="c-consent" name="zgoda" type="checkbox" value="Tak" required /><label for="c-consent">Zapoznałem/am się z <a href="/polityka-prywatnosci.html" target="_blank" rel="noopener">Polityką prywatności</a> i wyrażam zgodę na kontakt w sprawie rekrutacji do pilotażu oraz przetwarzanie podanych danych wyłącznie w tym celu. *</label></div>
+        </div>
+        <p class="privacy-note">Dane wykorzystujemy wyłącznie do obsługi zgłoszenia rekrutacyjnego do pilotażu. Szczegóły: <a href="/polityka-prywatnosci.html" target="_blank" rel="noopener">Polityka prywatności</a>.</p>
+        <button class="submit" type="submit">Wyślij zgłoszenie kandydata</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div>Faza pilotażowa / badawcza. Brak rezerwacji i płatności na tym etapie. Brak usług medycznych i pielęgnacyjnych.</div>
+    <div class="footer-links"><a href="mailto:contactizaxi@gmail.com">contactizaxi@gmail.com</a><a href="/polityka-prywatnosci.html">Polityka prywatności</a></div>
+  </footer>
+
+  <script>
+    const familyTab=document.getElementById('tab-family');
+    const companionTab=document.getElementById('tab-companion');
+    const familyPanel=document.getElementById('family-panel');
+    const companionPanel=document.getElementById('companion-panel');
+    function show(which){
+      const family=which==='family';
+      familyTab.setAttribute('aria-selected',String(family));
+      companionTab.setAttribute('aria-selected',String(!family));
+      familyPanel.hidden=!family;
+      companionPanel.hidden=family;
+      (family?familyPanel:companionPanel).scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    familyTab.addEventListener('click',()=>show('family'));
+    companionTab.addEventListener('click',()=>show('companion'));
+
+    function requireOne(form, name, message){
+      const boxes=[...form.querySelectorAll(`input[name="${name}"]`)];
+      const validate=()=>{
+        const ok=boxes.some(b=>b.checked);
+        boxes[0].setCustomValidity(ok?'':message);
+      };
+      boxes.forEach(b=>b.addEventListener('change',validate));
+      form.addEventListener('submit',validate);
+    }
+    const familyForm=document.querySelector('form[name="rodziny-lodz"]');
+    const companionForm=document.querySelector('form[name="towarzysze-lodz"]');
+    requireOne(familyForm,'zakres','Wybierz co najmniej jeden zakres pomocy.');
+    requireOne(companionForm,'jezyki','Wybierz co najmniej jeden język.');
+    requireOne(companionForm,'dostepnosc','Wybierz co najmniej jeden termin dostępności.');
+  </script>
+</body>
+</html>
